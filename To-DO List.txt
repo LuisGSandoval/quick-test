@@ -1,21 +1,23 @@
 # Inicializar la app
-[ x ]  Inicializar un proyecto con react
-[ x ]  Instalar Redux (useContext hooks API)
+[x]  Inicializar un proyecto con react
+[x]  Instalar Redux (useContext hooks API)
 
 # Maquetacion
-[ x ]  maquetar Header
-[ x ]  maquetar search bar
-[ x ]  maquetar Lista de peliculas
-[ x ]  maquetar paginator
-[]  maquetar detalle de pelicula con popover
+[x]  maquetar Header
+[x]  maquetar search bar
+[x]  maquetar Lista de peliculas
+[x]  maquetar paginator
+[ ]  maquetar detalle de pelicula con popover
 
 # Funcionalidad estática 
-[ x ]  funcionalidad search bar
-[ x ]  funcionalidad paginator
-[]  funcionalidad detalle de pelicula con popover
+[x]  funcionalidad search bar
+[x]  funcionalidad paginator
+[ ]  funcionalidad detalle de pelicula con popover
 
 
 # Llamados http
-[ x ] Llamado de peliculas
-[] Llamado de detalle pelicula
+[x] Llamado de peliculas
+[ ] Llamado de detalle pelicula
 
+#Animaciones
+[ ] Animacion que permita ver solo el formulario de busqueda y tape la interfaz donde está la lista de peliculas

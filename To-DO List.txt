@@ -1,0 +1,8 @@
+[ x ]  Inicializar un proyecto con react
+[ x ]  Instalar Redux (useContext hooks API)
+[ x ]  maquetar Header
+[ x ]  maquetar lista de peliculas
+[]  maquetar detalle de pelicula con popover
+[]  maquetar Lista de peliculas
+
+[]  Hacer llamados desde esta app al 

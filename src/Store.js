@@ -8,16 +8,28 @@ export { CTX };
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'UPDATE_SEARCH_BAR':
+    case 'UPDATE_SEARCH_MOVIE_NAME':
       return {
         ...state,
-        searchedMovie: action.payload
+        searchedMovieSerieName: action.payload
+      };
+
+    case 'UPDATE_SEARCH_MOVIE_TYPE':
+      return {
+        ...state,
+        searchedMovieSerieType: action.payload
       };
 
     case 'UPDATE_CURRENT_PAGE_NUMBER':
       return {
         ...state,
         currentPage: action.payload
+      };
+
+    case 'LOAD_ALL_MOVIES':
+      return {
+        ...state,
+        movieList: action.payload
       };
 
     default:
@@ -28,8 +40,10 @@ function reducer(state, action) {
 // Initial state
 
 const initialState = {
-  searchedMovie: '',
-  movieList: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+  searchedMovieSerieName: '',
+  searchedMovieSerieType: '',
+
+  movieList: [],
 
   // Pagination
   currentPage: 1,

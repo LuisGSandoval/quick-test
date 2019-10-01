@@ -1,8 +1,21 @@
+# Inicializar la app
 [ x ]  Inicializar un proyecto con react
 [ x ]  Instalar Redux (useContext hooks API)
-[ x ]  maquetar Header
-[ x ]  maquetar lista de peliculas
-[]  maquetar detalle de pelicula con popover
-[]  maquetar Lista de peliculas
 
-[]  Hacer llamados desde esta app al 
+# Maquetacion
+[ x ]  maquetar Header
+[ x ]  maquetar search bar
+[ x ]  maquetar Lista de peliculas
+[ x ]  maquetar paginator
+[]  maquetar detalle de pelicula con popover
+
+# Funcionalidad estática 
+[ x ]  funcionalidad search bar
+[ x ]  funcionalidad paginator
+[]  funcionalidad detalle de pelicula con popover
+
+
+# Llamados http
+[] Llamado de peliculas
+[] Llamado de detalle pelicula
+

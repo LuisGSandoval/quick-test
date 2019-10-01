@@ -6,11 +6,13 @@ const ResultsMessage = () => {
 
   return (
     <div className="container pt-3">
-      {appData.movieList.length > 0 && (
-        <h2>
-          {appData.movieList.length} results for "{appData.searchedMovie}"
-        </h2>
-      )}
+      {appData.movieList.length > 0 &&
+        appData.searchedMovieSerieName.length > 2 && (
+          <h2>
+            {appData.movieList.length} results for "
+            {appData.searchedMovieSerieName}"
+          </h2>
+        )}
     </div>
   );
 };

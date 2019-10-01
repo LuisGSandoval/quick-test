@@ -24,6 +24,8 @@ const Paginator = () => {
       type: 'UPDATE_CURRENT_PAGE_NUMBER',
       payload: number
     });
+
+    window.scrollTo(0, 0);
   };
 
   for (let number = 1; number <= totalPaginations(); number++) {

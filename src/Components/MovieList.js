@@ -22,8 +22,16 @@ const MovieList = () => {
   }, [appData.currentPage, appData.movieList, appData.itemsPerPage]);
 
   const showDescription = movieId => {
+    dispatcher({
+      type: 'TOGGLE_LOADER',
+      payload: true
+    });
     requestMovieDescription(movieId)
       .then(data => {
+        dispatcher({
+          type: 'TOGGLE_LOADER',
+          payload: false
+        });
         console.log(data);
         dispatcher({
           type: 'OPEN_MOVIE_DESCRIPTION',
@@ -32,6 +40,10 @@ const MovieList = () => {
         dispatcher({
           type: 'LOAD_MOVIE_DESCRIPTION',
           payload: data
+        });
+        dispatcher({
+          type: 'TOGGLE_LOADER',
+          payload: false
         });
       })
       .catch(err => {

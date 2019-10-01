@@ -20,11 +20,12 @@ const Header = () => {
         <Navbar.Brand href="#home">Movies & Series</Navbar.Brand>
 
         <Form className="text-right">
-          <div key="inline-radio" className="mb-3">
+          <div key="inline-radio">
             <FormControl
               type="text"
               placeholder="Search"
-              className="mr-sm-2"
+              // className="mr-sm-2"
+              size="sm"
               value={appData.searchedMovie}
               name="searchedMovie"
               onChange={handleChange}

@@ -14,15 +14,26 @@ function reducer(state, action) {
         searchedMovie: action.payload
       };
 
+    case 'UPDATE_CURRENT_PAGE_NUMBER':
+      return {
+        ...state,
+        currentPage: action.payload
+      };
+
     default:
       return Error('reducer error');
   }
 }
 
 // Initial state
+
 const initialState = {
   searchedMovie: '',
-  movieList: [{}, {}, {}, {}]
+  movieList: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+
+  // Pagination
+  currentPage: 1,
+  itemsPerPage: 8
 };
 
 export default function Store(props) {

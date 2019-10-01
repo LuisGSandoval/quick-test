@@ -20,4 +20,5 @@
 [x] Llamado de detalle pelicula
 
 #Animaciones
+[x] loader para dar la sensación de que está cargando
 [ ] Animacion que permita ver solo el formulario de busqueda y tape la interfaz donde está la lista de peliculas

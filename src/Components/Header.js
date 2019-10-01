@@ -3,6 +3,7 @@ import { CTX } from '../Store';
 
 import { requestMovies } from '../Actions/moviesActions';
 
+import Spinner from 'react-bootstrap/Spinner';
 import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
@@ -29,10 +30,17 @@ const Header = () => {
       t: appData.searchedMovieSerieName,
       type: appData.searchedMovieSerieType
     };
-    // if()
+    dispatcher({
+      type: 'TOGGLE_LOADER',
+      payload: true
+    });
     requestMovies(filters)
       .then(data => {
         console.log(data);
+        dispatcher({
+          type: 'TOGGLE_LOADER',
+          payload: false
+        });
         if (data.Search) {
           dispatcher({
             type: 'LOAD_ALL_MOVIES',
@@ -41,6 +49,10 @@ const Header = () => {
         }
       })
       .catch(err => {
+        dispatcher({
+          type: 'TOGGLE_LOADER',
+          payload: false
+        });
         console.log(err);
       });
   };
@@ -51,6 +63,9 @@ const Header = () => {
     <Navbar bg="info" variant="dark" className="justify-content-between">
       <div className="container">
         <Navbar.Brand href="#home">Movies & Series</Navbar.Brand>
+        {appData.loader && (
+          <Spinner animation="border" className="float-right" variant="white" />
+        )}
 
         <Form className="text-right" onSubmit={e => e.preventDefault()}>
           <div key="inline-radio">

@@ -64,11 +64,15 @@ const MovieDescription = () => {
                 </h6>
 
                 <p className="card-text">{appData.movieDescription.Plot}</p>
+
+                <button className="btn btn-info" onClick={handleClose}>
+                  close
+                </button>
               </div>
             </div>
           </div>
         ) : (
-          <p>No se encuentra na</p>
+          <p>No se encuentra detalles de esta película</p>
         )}
       </Modal.Body>
     </Modal>

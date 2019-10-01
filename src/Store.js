@@ -54,6 +54,16 @@ function reducer(state, action) {
         movieDescription: action.payload
       };
 
+    //******************************* */
+    //*             UTILS             */
+    //******************************* */
+
+    case 'TOGGLE_LOADER':
+      return {
+        ...state,
+        loader: action.payload
+      };
+
     default:
       return Error('reducer error');
   }
@@ -73,7 +83,10 @@ const initialState = {
 
   // Pagination
   currentPage: 1,
-  itemsPerPage: 8
+  itemsPerPage: 8,
+
+  // Utils
+  loader: false
 };
 
 export default function Store(props) {

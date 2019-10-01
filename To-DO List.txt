@@ -16,6 +16,6 @@
 
 
 # Llamados http
-[] Llamado de peliculas
+[ x ] Llamado de peliculas
 [] Llamado de detalle pelicula
 

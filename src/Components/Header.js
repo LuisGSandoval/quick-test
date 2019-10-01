@@ -33,10 +33,12 @@ const Header = () => {
     requestMovies(filters)
       .then(data => {
         console.log(data);
-        dispatcher({
-          type: 'LOAD_ALL_MOVIES',
-          payload: data.Search
-        });
+        if (data.Search) {
+          dispatcher({
+            type: 'LOAD_ALL_MOVIES',
+            payload: data.Search
+          });
+        }
       })
       .catch(err => {
         console.log(err);

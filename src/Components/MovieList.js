@@ -1,11 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CTX } from '../Store';
+import { requestMovieDescription } from '../Actions/moviesActions';
 
 const MovieList = () => {
-  const [
-    appData
-    //  , dispatcher
-  ] = useContext(CTX);
+  const [appData, dispatcher] = useContext(CTX);
 
   const [moviesToShow, setMoviesToShow] = useState([]);
 
@@ -24,7 +22,21 @@ const MovieList = () => {
   }, [appData.currentPage, appData.movieList, appData.itemsPerPage]);
 
   const showDescription = movieId => {
-    console.log(movieId);
+    requestMovieDescription(movieId)
+      .then(data => {
+        console.log(data);
+        dispatcher({
+          type: 'OPEN_MOVIE_DESCRIPTION',
+          payload: !appData.showModal
+        });
+        dispatcher({
+          type: 'LOAD_MOVIE_DESCRIPTION',
+          payload: data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (

@@ -7,17 +7,17 @@
 [x]  maquetar search bar
 [x]  maquetar Lista de peliculas
 [x]  maquetar paginator
-[ ]  maquetar detalle de pelicula con popover
+[x]  maquetar detalle de pelicula con modal
 
 # Funcionalidad estática 
 [x]  funcionalidad search bar
 [x]  funcionalidad paginator
-[ ]  funcionalidad detalle de pelicula con popover
+[x]  funcionalidad detalle de pelicula con modal
 
 
 # Llamados http
 [x] Llamado de peliculas
-[ ] Llamado de detalle pelicula
+[x] Llamado de detalle pelicula
 
 #Animaciones
 [ ] Animacion que permita ver solo el formulario de busqueda y tape la interfaz donde está la lista de peliculas

@@ -18,11 +18,23 @@ export const requestMovies = filter => {
       params += `r=json&`;
 
       axios
-        .get(`http://www.omdbapi.com/?${params}apikey=${apiKey}`)
+        .get(`https://www.omdbapi.com/?${params}apikey=${apiKey}`)
         .then(res => {
           resolve(res.data);
         })
         .catch(err => reject(err.response.data));
     }, 500);
+  });
+};
+
+export const requestMovieDescription = movieId => {
+  return new Promise((resolve, reject) => {
+    let params = `i=${movieId}&`;
+    axios
+      .get(`https://www.omdbapi.com/?${params}apikey=${apiKey}`)
+      .then(res => {
+        resolve(res.data);
+      })
+      .catch(err => reject(err.response.data));
   });
 };

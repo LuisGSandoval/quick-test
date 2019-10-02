@@ -17,6 +17,10 @@ const Header = () => {
       payload: e.target.value
     });
     requestAllMovies();
+    dispatcher({
+      type: 'TOGGLE_LOADER',
+      payload: true
+    });
   };
   const handleCheck = e => {
     dispatcher({
@@ -30,10 +34,7 @@ const Header = () => {
       t: appData.searchedMovieSerieName,
       type: appData.searchedMovieSerieType
     };
-    dispatcher({
-      type: 'TOGGLE_LOADER',
-      payload: true
-    });
+
     requestMovies(filters)
       .then(data => {
         console.log(data);

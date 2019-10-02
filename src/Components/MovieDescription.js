@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { CTX } from '../Store';
 import Modal from 'react-bootstrap/Modal';
-import StarRatings from 'react-star-ratings';
+import Rating from 'react-rating';
 
 const MovieDescription = () => {
   const [appData, dispatcher] = useContext(CTX);
@@ -35,14 +35,11 @@ const MovieDescription = () => {
                 </h6>
 
                 <div className="my-3">
-                  <StarRatings
-                    rating={0}
-                    starRatedColor="blue"
-                    // changeRating={this.changeRating}
-                    numberOfStars={5}
-                    starDimension="20px"
-                    starSpacing="5px"
-                    name="rating"
+                  <Rating
+                    readonly={true}
+                    emptySymbol="far fa-heart mr-2"
+                    fullSymbol="fas fa-heart text-warning mr-2"
+                    initialRating={appData.movieDescription.imdbRating / 2}
                   />
                 </div>
 

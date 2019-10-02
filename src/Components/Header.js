@@ -10,7 +10,10 @@ const Header = () => {
   const [appData] = useContext(CTX);
 
   useEffect(() => {
-    if (appData.searchedMovieSerieName.length < 1) {
+    if (
+      appData.searchedMovieSerieName &&
+      appData.searchedMovieSerieName.length < 1
+    ) {
       document.body.classList.add('modal-open');
     } else {
       document.body.classList.remove('modal-open');
@@ -23,7 +26,10 @@ const Header = () => {
         bg="info"
         variant="dark"
         className={` ${
-          appData.searchedMovieSerieName.length < 1 ? 'search-full-height' : ''
+          appData.searchedMovieSerieName === '' &&
+          appData.searchedMovieSerieName.length < 1
+            ? 'search-full-height'
+            : ''
         }`}
       >
         <div className="container">

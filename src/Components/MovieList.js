@@ -9,7 +9,10 @@ const MovieList = () => {
 
   // Con esta función mostramos unicamente los resultados que queremos de las peliculas dependiendo de la paginación
   useEffect(() => {
-    let completeMovieList = [...appData.movieList];
+    let completeMovieList =
+      appData.movieList && appData.movieList.length > 0
+        ? [...appData.movieList]
+        : [];
     let curPage = appData.currentPage;
     let itsXPage = appData.itemsPerPage;
 
@@ -52,13 +55,14 @@ const MovieList = () => {
   };
 
   return (
-    <div className="container pt-5">
-      <div className="row">
-        {moviesToShow.length > 0
-          ? moviesToShow.map(movie => (
+    <>
+      {moviesToShow.length > 0 ? (
+        <div className="container pt-5">
+          <div className="row">
+            {moviesToShow.map(movie => (
               <div
-                className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"
                 key={movie.imdbID}
+                className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"
               >
                 <div
                   className="card showHand"
@@ -77,10 +81,11 @@ const MovieList = () => {
                   </div>
                 </div>
               </div>
-            ))
-          : null}
-      </div>
-    </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 

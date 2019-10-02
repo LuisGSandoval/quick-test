@@ -5,15 +5,24 @@ const ResultsMessage = () => {
   const [appData] = useContext(CTX);
 
   return (
-    <div className="container pt-3">
-      {appData.movieList.length > 0 &&
-        appData.searchedMovieSerieName.length > 2 && (
+    <>
+      {appData.movieList &&
+      appData.movieList.length > 0 &&
+      appData.searchedMovieSerieName.length > 2 ? (
+        <div className="container pt-3">
           <h2>
             {appData.movieList.length} results for "
             {appData.searchedMovieSerieName}"
           </h2>
-        )}
-    </div>
+        </div>
+      ) : appData.Error && appData.Error !== '' ? (
+        <div className="container pt-3">
+          <h2>
+            {appData.Error} for "{appData.searchedMovieSerieName}"
+          </h2>
+        </div>
+      ) : null}
+    </>
   );
 };
 

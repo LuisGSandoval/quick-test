@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-// Esta sería mi llave privada, la cual en otras situaciones debería ser protegida de estar en repositorios públicos
+// Esta sería mi llave privada, la cual en otras situaciones debería
+// ser protegida de estar en repositorios o en la app del cliente
 const apiKey = 'e894d40';
-const totalQantity = '100';
+const totalQantity = '3';
 
 export const requestMovies = filter => {
   return new Promise((resolve, reject) => {
@@ -14,7 +15,7 @@ export const requestMovies = filter => {
       let params = '';
       params = filter.t.length > 2 ? `s=${filter.t}&` : '';
       params += filter.type !== '' ? `type=${filter.type}&` : '';
-      params += `pages=${totalQantity}&`;
+      params += `page=${totalQantity}&`;
       params += `r=json&`;
 
       axios

@@ -31,11 +31,22 @@ function reducer(state, action) {
         ...state,
         currentPage: action.payload
       };
+    case 'LOAD_TOTAL_RESULTS_NUMBER':
+      return {
+        ...state,
+        totalResults: action.payload
+      };
 
     case 'LOAD_ALL_MOVIES':
       return {
         ...state,
         movieList: action.payload
+      };
+
+    case 'LOAD_ERROR':
+      return {
+        ...state,
+        Error: action.payload
       };
 
     //******************************* */
@@ -75,6 +86,7 @@ const initialState = {
   // Movie search
   searchedMovieSerieName: '',
   searchedMovieSerieType: '',
+  Error: '',
 
   movieList: [],
 
@@ -83,8 +95,9 @@ const initialState = {
   movieDescription: {},
 
   // Pagination
+  totalResults: 0,
   currentPage: 1,
-  itemsPerPage: 8,
+  itemsPerPage: 10,
 
   // Utils
   loader: false

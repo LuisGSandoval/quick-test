@@ -22,10 +22,20 @@ const SearchForm = () => {
           type: 'TOGGLE_LOADER',
           payload: false
         });
-        if (data.Search) {
+        if (data.Search && data.Search.length > 0) {
           dispatcher({
             type: 'LOAD_ALL_MOVIES',
             payload: data.Search
+          });
+          dispatcher({
+            type: 'LOAD_TOTAL_RESULTS_NUMBER',
+            payload: data.totalResults
+          });
+        }
+        if (data.Error) {
+          dispatcher({
+            type: 'LOAD_ERROR',
+            payload: data.Error
           });
         }
       })

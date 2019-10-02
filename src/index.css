@@ -7,11 +7,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
-
 .showHand {
   cursor: pointer;
+}
+.search-full-height {
+  height: 100vh;
+}
+
+.search-full-height div a.navbar-brand {
+  position: absolute !important;
+  top: 0px !important;
+}
+
+.search-full-height div form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-negative-margin {
+  margin-top: -55px;
+}
+
+.z-index-1000 {
+  z-index: 1000;
 }

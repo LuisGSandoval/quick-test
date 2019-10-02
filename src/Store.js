@@ -72,6 +72,7 @@ function reducer(state, action) {
 // Initial state
 
 const initialState = {
+  // Movie search
   searchedMovieSerieName: '',
   searchedMovieSerieType: '',
 

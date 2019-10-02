@@ -37,7 +37,7 @@ const MovieDescription = () => {
                 <div className="my-3">
                   <Rating
                     readonly={true}
-                    emptySymbol="far fa-heart mr-2"
+                    emptySymbol="far fa-heart text-warning mr-2"
                     fullSymbol="fas fa-heart text-warning mr-2"
                     initialRating={appData.movieDescription.imdbRating / 2}
                   />
@@ -62,9 +62,11 @@ const MovieDescription = () => {
 
                 <p className="card-text">{appData.movieDescription.Plot}</p>
 
-                <button className="btn btn-info" onClick={handleClose}>
-                  close
-                </button>
+                <div className="text-right">
+                  <button className="btn btn-info" onClick={handleClose}>
+                    close
+                  </button>
+                </div>
               </div>
             </div>
           </div>

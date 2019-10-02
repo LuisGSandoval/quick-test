@@ -40,16 +40,14 @@ const Paginator = () => {
       .then(data => {
         console.log(data);
 
-        // if (data.Search && data.Search.length > 0) {
         dispatcher({
           type: 'LOAD_ALL_MOVIES',
-          payload: data.Search
+          payload: data.Search && data.Search.length > 0 ? data.Search : []
         });
         dispatcher({
           type: 'LOAD_TOTAL_RESULTS_NUMBER',
-          payload: data.totalResults
+          payload: data.totalResults ? data.totalResults : 0
         });
-        // }
 
         dispatcher({
           type: 'LOAD_ERROR',
@@ -78,7 +76,6 @@ const Paginator = () => {
         <div className="container">
           <div className="d-flex justify-content-center my-5">
             <ReactPaginate
-              id="react-paginate"
               previousLabel={'previous'}
               nextLabel={'next'}
               breakLabel={'...'}
@@ -87,8 +84,8 @@ const Paginator = () => {
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               onPageChange={updatePaginator}
-              containerClassName={'pagination'}
               subContainerClassName={'pages pagination'}
+              // Classes
               activeClassName={'active'}
               containerClassName="pagination"
               pageClassName="page-item"

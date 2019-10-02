@@ -1,25 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { CTX } from '../Store';
 import { requestMovieDescription } from '../Actions/moviesActions';
 
 const MovieList = () => {
   const [appData, dispatcher] = useContext(CTX);
-
-  // const [moviesToShow, setMoviesToShow] = useState([]);
-
-  // // Con esta función mostramos unicamente los resultados que queremos de las peliculas dependiendo de la paginación
-  // useEffect(() => {
-  //   // let completeMovieList =
-  //   //   appData.movieList && appData.movieList.length > 0
-  //   //     ? [...appData.movieList]
-  //   //     : [];
-  //   // let curPage = appData.currentPage;
-  //   // let itsXPage = appData.itemsPerPage;
-  //   // let startingPoint = (curPage - 1) * itsXPage;
-  //   // let endingPoint = startingPoint + itsXPage;
-  //   // let sliced = completeMovieList.slice(startingPoint, endingPoint);
-  //   // setMoviesToShow(sliced);
-  // }, [appData.currentPage, appData.movieList, appData.itemsPerPage]);
 
   const showDescription = movieId => {
     dispatcher({

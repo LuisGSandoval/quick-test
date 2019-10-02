@@ -18,16 +18,22 @@ const MovieDescription = () => {
       <Modal.Body>
         {appData.movieDescription ? (
           <div className="row">
-            <div className="col-12 col-sm-6">
-              <div className="card">
-                <img
-                  src={appData.movieDescription.Poster}
-                  className="card-img-top"
-                  alt={appData.movieDescription.Title}
-                />
+            {appData.movieDescription.Poster !== 'N/A' && (
+              <div className="col-12 col-sm-6">
+                <div className="card">
+                  <img
+                    src={appData.movieDescription.Poster}
+                    className="card-img-top"
+                    alt={appData.movieDescription.Title}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-12 col-sm-6">
+            )}
+            <div
+              className={`col-12 ${
+                appData.movieDescription.Poster !== 'N/A' ? 'col-sm-6' : ''
+              }`}
+            >
               <div className="card-body">
                 <h5 className="card-title">{appData.movieDescription.Title}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">

@@ -5,24 +5,21 @@ import { requestMovieDescription } from '../Actions/moviesActions';
 const MovieList = () => {
   const [appData, dispatcher] = useContext(CTX);
 
-  const [moviesToShow, setMoviesToShow] = useState([]);
+  // const [moviesToShow, setMoviesToShow] = useState([]);
 
-  // Con esta función mostramos unicamente los resultados que queremos de las peliculas dependiendo de la paginación
-  useEffect(() => {
-    let completeMovieList =
-      appData.movieList && appData.movieList.length > 0
-        ? [...appData.movieList]
-        : [];
-    let curPage = appData.currentPage;
-    let itsXPage = appData.itemsPerPage;
-
-    let startingPoint = (curPage - 1) * itsXPage;
-    let endingPoint = startingPoint + itsXPage;
-
-    let sliced = completeMovieList.slice(startingPoint, endingPoint);
-
-    setMoviesToShow(sliced);
-  }, [appData.currentPage, appData.movieList, appData.itemsPerPage]);
+  // // Con esta función mostramos unicamente los resultados que queremos de las peliculas dependiendo de la paginación
+  // useEffect(() => {
+  //   // let completeMovieList =
+  //   //   appData.movieList && appData.movieList.length > 0
+  //   //     ? [...appData.movieList]
+  //   //     : [];
+  //   // let curPage = appData.currentPage;
+  //   // let itsXPage = appData.itemsPerPage;
+  //   // let startingPoint = (curPage - 1) * itsXPage;
+  //   // let endingPoint = startingPoint + itsXPage;
+  //   // let sliced = completeMovieList.slice(startingPoint, endingPoint);
+  //   // setMoviesToShow(sliced);
+  // }, [appData.currentPage, appData.movieList, appData.itemsPerPage]);
 
   const showDescription = movieId => {
     dispatcher({
@@ -56,10 +53,10 @@ const MovieList = () => {
 
   return (
     <>
-      {moviesToShow.length > 0 ? (
+      {appData.movieList.length > 0 ? (
         <div className="container pt-5">
           <div className="row">
-            {moviesToShow.map(movie => (
+            {appData.movieList.map(movie => (
               <div
                 key={movie.imdbID}
                 className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"

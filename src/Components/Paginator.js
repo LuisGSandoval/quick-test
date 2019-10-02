@@ -39,38 +39,34 @@ const Paginator = () => {
     requestMovies(filters)
       .then(data => {
         console.log(data);
+
+        // if (data.Search && data.Search.length > 0) {
+        dispatcher({
+          type: 'LOAD_ALL_MOVIES',
+          payload: data.Search
+        });
+        dispatcher({
+          type: 'LOAD_TOTAL_RESULTS_NUMBER',
+          payload: data.totalResults
+        });
+        // }
+
+        dispatcher({
+          type: 'LOAD_ERROR',
+          payload: data.Error ? data.Error : ''
+        });
+
         dispatcher({
           type: 'TOGGLE_LOADER',
           payload: false
         });
-        if (data.Search && data.Search.length > 0) {
-          dispatcher({
-            type: 'LOAD_ALL_MOVIES',
-            payload: data.Search
-          });
-          dispatcher({
-            type: 'LOAD_TOTAL_RESULTS_NUMBER',
-            payload: data.totalResults
-          });
-        }
-        if (data.Error) {
-          dispatcher({
-            type: 'LOAD_ERROR',
-            payload: data.Error
-          });
-        } else {
-          dispatcher({
-            type: 'LOAD_ERROR',
-            payload: ''
-          });
-        }
       })
       .catch(err => {
         dispatcher({
           type: 'TOGGLE_LOADER',
           payload: false
         });
-        console.log(err);
+        console.log('Error \n', err);
       });
 
     window.scrollTo(0, 0);

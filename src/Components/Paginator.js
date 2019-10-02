@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { CTX } from '../Store';
 
-import Pagination from 'react-bootstrap/Pagination';
+import { requestMovies } from '../Actions/moviesActions';
+
+import ReactPaginate from 'react-paginate';
 
 const Paginator = () => {
   const [appData, dispatcher] = useContext(CTX);
-
-  let items = [];
 
   const totalPaginations = () => {
     if (appData.totalResults < 1) {
@@ -22,59 +22,86 @@ const Paginator = () => {
   const updatePaginator = number => {
     dispatcher({
       type: 'UPDATE_CURRENT_PAGE_NUMBER',
-      payload: number
+      payload: number.selected + 1
     });
+
+    dispatcher({
+      type: 'TOGGLE_LOADER',
+      payload: true
+    });
+
+    let filters = {
+      t: appData.searchedMovieSerieName,
+      type: appData.searchedMovieSerieType,
+      page: number.selected + 1
+    };
+
+    requestMovies(filters)
+      .then(data => {
+        console.log(data);
+        dispatcher({
+          type: 'TOGGLE_LOADER',
+          payload: false
+        });
+        if (data.Search && data.Search.length > 0) {
+          dispatcher({
+            type: 'LOAD_ALL_MOVIES',
+            payload: data.Search
+          });
+          dispatcher({
+            type: 'LOAD_TOTAL_RESULTS_NUMBER',
+            payload: data.totalResults
+          });
+        }
+        if (data.Error) {
+          dispatcher({
+            type: 'LOAD_ERROR',
+            payload: data.Error
+          });
+        } else {
+          dispatcher({
+            type: 'LOAD_ERROR',
+            payload: ''
+          });
+        }
+      })
+      .catch(err => {
+        dispatcher({
+          type: 'TOGGLE_LOADER',
+          payload: false
+        });
+        console.log(err);
+      });
 
     window.scrollTo(0, 0);
   };
-
-  // for (
-  //   let number = appData.currentPage - 2;
-  //   number <= totalPaginations() <= appData.currentPage - 5
-  //     ? appData.currentPage + 2
-  //     : totalPaginations();
-  //   number++
-  // ) {
-  for (let number = 1; number <= totalPaginations(); number++) {
-    items.push(
-      <Pagination.Item
-        key={number}
-        active={number === appData.currentPage}
-        onClick={() => updatePaginator(number)}
-      >
-        {number}
-      </Pagination.Item>
-    );
-  }
 
   return (
     <>
       {appData.totalResults > 0 && (
         <div className="container">
           <div className="d-flex justify-content-center my-5">
-            <Pagination size="sm">
-              <Pagination.First onClick={() => updatePaginator(1)} />
-              <Pagination.Prev
-                onClick={e =>
-                  appData.currentPage > 1
-                    ? updatePaginator(appData.currentPage - 1)
-                    : e.preventDefault()
-                }
-              />
-
-              {items}
-
-              <Pagination.Next
-                onClick={e =>
-                  appData.currentPage < appData.totalResults
-                    ? updatePaginator(appData.currentPage + 1)
-                    : e.preventDefault()
-                }
-              />
-              <Pagination.Last
-                onClick={() => updatePaginator(appData.totalResults)}
-              />
-            </Pagination>
+            <ReactPaginate
+              id="react-paginate"
+              previousLabel={'previous'}
+              nextLabel={'next'}
+              breakLabel={'...'}
+              breakClassName={'break-me'}
+              pageCount={totalPaginations()}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={updatePaginator}
+              containerClassName={'pagination'}
+              subContainerClassName={'pages pagination'}
+              activeClassName={'active'}
+              containerClassName="pagination"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+            />
           </div>
         </div>
       )}

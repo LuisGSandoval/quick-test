@@ -17,8 +17,8 @@ const ResultsMessage = () => {
         appData.searchedMovieSerieName.length > 2 ? (
         <div className="container pt-3">
           <h2>
-            {appData.movieList.length} results for "
-            {appData.searchedMovieSerieName}"
+            {appData.totalResults} results for "{appData.searchedMovieSerieName}
+            "
           </h2>
         </div>
       ) : null}

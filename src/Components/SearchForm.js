@@ -37,6 +37,11 @@ const SearchForm = () => {
             type: 'LOAD_ERROR',
             payload: data.Error
           });
+        } else {
+          dispatcher({
+            type: 'LOAD_ERROR',
+            payload: ''
+          });
         }
       })
       .catch(err => {
@@ -67,6 +72,17 @@ const SearchForm = () => {
       payload: e.target.value
     });
     requestAllMovies();
+    if (appData.searchedMovieSerieName.length > 2) {
+      dispatcher({
+        type: 'TOGGLE_LOADER',
+        payload: true
+      });
+    } else {
+      dispatcher({
+        type: 'TOGGLE_LOADER',
+        payload: false
+      });
+    }
   };
 
   const { searchedMovieSerieName } = appData;

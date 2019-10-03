@@ -76,13 +76,13 @@ const Paginator = () => {
         <div className="container">
           <div className="d-flex justify-content-center my-5">
             <ReactPaginate
-              previousLabel={'previous'}
-              nextLabel={'next'}
+              previousLabel={'<'}
+              nextLabel={'>'}
               breakLabel={'...'}
               breakClassName={'break-me'}
               pageCount={totalPaginations()}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={3}
               onPageChange={updatePaginator}
               subContainerClassName={'pages pagination'}
               // Classes
